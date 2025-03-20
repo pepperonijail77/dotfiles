@@ -1,0 +1,202 @@
+/** ********** Fonts ********** **/
+* {
+    font-family: "Ubuntu Mono Nerd Font";
+    font-size: 18px;
+}
+
+/** ********** Waybar Window ********** **/
+window#waybar {
+    background-color: #2e3440;
+    color: #eceff4;
+    border-bottom: 2px solid #2e3440;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.5;
+}
+
+/** ********* Workspaces ********** **/
+
+#workspaces {
+  margin-left: 6px;
+}
+
+#workspaces button {
+    padding: 4px 5px;
+    background-color: transparent;
+    color: #eceff4;
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each workspace name */
+    border: none;
+    border-radius: 4px;
+
+    margin: 6px 0px;
+    padding: 2px 5px;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 -3px #eceff4;
+}
+
+#workspaces button.focused {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #eceff4;
+}
+
+#workspaces button.urgent {
+    background-color: #ebcb8b;
+}
+
+#workspaces button.active {
+    background-color: #e5e9f0;
+    color: #2e3440;
+}
+
+/** ********** Backlight ********** **/
+#backlight {
+	background-color: #cba6f7;
+}
+
+/** ********** Clock ********** **/
+#clock {
+	background-color: #3b4252;
+}
+
+/** ********** CPU ********** **/
+#cpu {
+	background-color: #3b4252;
+}
+
+/** ********** Memory ********** **/
+#memory {
+	background-color: #3b4252;
+}
+
+/** ********** Disk ********** **/
+#disk {
+	background-color: #3b4252;
+}
+
+/** ********** Tray ********** **/
+#tray {
+	background-color: #3b4252;
+}
+
+#tray menu {
+	background-color: #434c5e;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+#tray > .active {
+}
+
+/** ********** MPD ********** **/
+#mpd {
+	background-color: #3b4252;
+}
+
+#mpd.disconnected {
+	background-color: #3b4252;
+}
+
+#mpd.stopped {
+	background-color: #3b4252;
+}
+
+#mpd.playing {
+	background-color: #a3be8c;
+}
+
+#mpd.paused {
+	background-color: #b48ead;
+}
+
+/** ********** Pulseaudio ********** **/
+#pulseaudio {
+	background-color: #3b4252;
+}
+
+#pulseaudio.bluetooth {
+	background-color: #b48ead;
+}
+#pulseaudio.muted {
+	background-color: #bf616a;
+}
+
+/** ********** Network ********** **/
+#network {
+	background-color: #3b4252;
+}
+
+#network.disconnected,#network.disabled {
+	background-color: #bf616a;
+}
+#network.linked {
+}
+#network.ethernet {
+	background-color: #a3be8c;
+}
+#network.wifi {
+	background-color: #a3be8c;
+}
+
+/** ********** Custom ********** **/
+#custom-menu, #custom-power, #custom-notification, #custom-lang {
+	border-radius: 4px;
+	margin: 6px 0px;
+	padding: 2px 8px;
+}
+
+#custom-menu {
+	background-color: #3b4252;
+	margin-left: 6px;
+	padding: 2px 6px;
+	font-size: 16px;
+}
+
+#custom-power {
+	background-color: #d8dee9;
+	color: #2e3440;
+	margin-right: 6px;
+	padding: 2px 8px;
+	font-size: 16px;
+}
+
+#custom-notification {
+    padding: 2px 8px;
+    background-color: #434c5e;
+    font-size: 16px;
+    margin-right: 6px;
+}
+
+#custom-lang {
+    background-color: #3b4252;
+    /* padding: 0; */
+}
+
+/** Common style **/
+#backlight, 
+#battery,
+#clock,
+#cpu,
+#disk,
+#mode,
+#memory,
+#mpd,
+#tray,
+#pulseaudio,
+#network {
+	border-radius: 4px;
+	margin: 6px 0px;
+	padding: 2px 8px;
+}
