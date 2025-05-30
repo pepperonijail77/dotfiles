@@ -1,6 +1,6 @@
 /** ********** Fonts ********** **/
 * {
-    font-family: "Ubuntu Mono Nerd Font";
+    font-family: "JetBrainsMonoNF Regular";
     font-size: 18px;
 }
 
@@ -141,17 +141,20 @@ window#waybar.hidden {
 #network.disconnected,#network.disabled {
 	background-color: #bf616a;
 }
+
 #network.linked {
 }
+
 #network.ethernet {
 	background-color: #a3be8c;
 }
+
 #network.wifi {
 	background-color: #a3be8c;
 }
 
 /** ********** Custom ********** **/
-#custom-menu, #custom-power, #custom-notification, #custom-lang {
+#custom-menu, #custom-power, #custom-notification, #custom-lang, #custom-updates {
 	border-radius: 4px;
 	margin: 6px 0px;
 	padding: 2px 8px;
@@ -159,9 +162,9 @@ window#waybar.hidden {
 
 #custom-menu {
 	background-color: #3b4252;
-	margin-left: 6px;
+	/* margin-left: 6px; */
 	padding: 2px 6px;
-	font-size: 16px;
+	/* font-size: 16px; */
 }
 
 #custom-power {
@@ -169,19 +172,23 @@ window#waybar.hidden {
 	color: #2e3440;
 	margin-right: 6px;
 	padding: 2px 8px;
-	font-size: 16px;
+	/* font-size: 16px; */
 }
 
 #custom-notification {
     padding: 2px 8px;
-    background-color: #434c5e;
-    font-size: 16px;
     margin-right: 6px;
+    background-color: #434c5e;
+    /* font-size: 16px; */
 }
 
 #custom-lang {
     background-color: #3b4252;
     /* padding: 0; */
+}
+
+#custom-updates {
+    background-color: #3b4252;
 }
 
 /** Common style **/

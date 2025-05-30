@@ -8,7 +8,7 @@
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
     // "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock", "tray"],
-    "modules-right": ["tray", "mpd", "custom/lang", "pulseaudio", "custom/menu", "custom/notification", "custom/power"],
+    "modules-right": ["tray", "custom/updates", "pulseaudio", "custom/notification", "custom/power"], // "custom/lang", "mpd", "custom/menu",
     // Modules configuration
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -17,14 +17,7 @@
         "on-click": "activate",
 		"sort-by-number": true,
         "format-icons": {
-            "1": " ",
-            "2": "🌐",
-            "3": " ",
-            "4": "",
-            "5": "",
-            "urgent": "",
-            "focused": "",
-            "default": ""
+            "default": " "
         },
 		"persistent-workspaces": {
 			"1": [],
@@ -40,9 +33,6 @@
             "locked": "",
             "unlocked": ""
         }
-    },
-    "hyprland/mode": {
-        "format": "<span style=\"italic\">{}</span>"
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) {volume}%",
@@ -164,7 +154,18 @@
     "custom/power": {
     	"tooltip": false,
     	"format": "⏻",
-    	"on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh"
+    	"on-click": "nwg-bar"
+    },
+    "custom/updates": {
+        "format": "{} {icon}",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates": "󱍷",
+            "updated": "󰂪"
+        },
+        "exec-if": "which ~/.config/waybar/waybar-module-pacman-updates",
+        "exec": "~/.config/waybar/waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300 --tooltip-align-columns",
+        "on-click": "kitty sudo pacman -Syu"
     },
 }
 
