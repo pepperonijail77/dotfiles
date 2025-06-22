@@ -54,7 +54,17 @@ alias smicro='sudo micro'
 alias py='python3'
 alias python='python3'
 alias pip='pip3'
-alias activate='source .venv/bin/activate'
+
+# Activate python virtual environment
+function activate {
+	if [ -d .venv ]; then
+		source .venv/bin/activate
+	elif [ -d .qtcreator ]; then
+		source .qtcreator/Python_*venv/bin/activate
+	fi
+}
+
+# alias activate='source .venv/bin/activate'
 
 # Set the default browser
 export BROWSER=firefox-developer-edition
@@ -96,12 +106,14 @@ alias pacman='sudo pacman'
 alias multitail='multitail --no-repeat -c'
 alias freshclam='sudo freshclam'
 alias ll='ls -Alh --color=auto'
+alias tree='tree -CAh --dirsfirst'
+
+alias yays='yay -Slq | fzf --multi --preview '\''yay -Sii {1}'\'' --preview-window=down:75% | xargs -ro yay -S'
+alias ll='ls -Fls'
 
 # Change directory aliases
 alias cd..='cd ..'
-
-# aliases to show disk space and space used in a folder
-alias tree='tree -CAh --dirsfirst'
+alias ..='cd ..'
 
 # Extracts any archive(s) (if unp isn't installed)
 extract() {
@@ -128,7 +140,7 @@ extract() {
 }
 
 # IP address lookup
-alias ipaddress='curl -s ifconfig.me; echo'
+alias ipaddress='curl -4 ifconfig.me; echo'
 
 # bind "set bell-style visible"
 
