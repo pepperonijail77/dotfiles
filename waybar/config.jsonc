@@ -165,7 +165,7 @@
         },
         "exec-if": "which ~/.config/waybar/waybar-module-pacman-updates",
         "exec": "~/.config/waybar/waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300 --tooltip-align-columns",
-        "on-click": "kitty yay -Syu"
+        "on-click": "kitty yay -Syu && kitty flatpak update"
     },
 }
 
