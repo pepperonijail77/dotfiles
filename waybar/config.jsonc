@@ -69,13 +69,15 @@
     "tray": {
         // "icon-size": 21,
         "show-passive-icons": true,
-        "spacing": 10
+        "spacing": 12
     },
     "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    },
+        "format": "{:L%a %H:%M:%S}",
+        "format-alt": "{:L%d %B %Y}", // "{:L%d/%m/%Y}"
+        "tooltip": true,
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "interval": 1
+	},
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
@@ -103,8 +105,8 @@
         // "scroll-step": 1.0, // %, can be a float
         "format": "{icon}  {volume}%",
         "format-bluetooth": "{icon}  {volume}%",
-        "format-bluetooth-muted": "{icon}  ",
-        "format-muted": " {format_source}",
+        "format-bluetooth-muted": "",
+        "format-muted": "",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -114,8 +116,7 @@
             "phone": "",
             "portable": "",
             "car": "",
-           // "default": ["", "", ""]
-            "default": [" ", " "]
+            "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
     },
