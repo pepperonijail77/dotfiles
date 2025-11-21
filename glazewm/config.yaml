@@ -1,0 +1,284 @@
+general:
+  # Commands to run when the WM has started. This is useful for running a
+  # script or launching another application.
+  # Example: The below command launches Zebar.
+  startup_commands: ['shell-exec %LocalAppData%\Programs\AutoHotkey\v2\AutoHotkey64.exe C:\Users\lucva\.config\glazewm\glazewm.ahk']
+
+  # Commands to run just before the WM is shutdown.
+  # Example: The below command kills Zebar.
+  shutdown_commands: ['shell-exec taskkill /IM autohotkey64.exe /F']
+
+  # Commands to run after the WM config is reloaded.
+  config_reload_commands: []
+
+  # Whether to automatically focus windows underneath the cursor.
+  focus_follows_cursor: true
+
+  # Whether to switch back and forth between the previously focused
+  # workspace when focusing the current workspace.
+  toggle_workspace_on_refocus: false
+
+  cursor_jump:
+    # Whether to automatically move the cursor on the specified trigger.
+    enabled: true
+
+    # Trigger for cursor jump:
+    # - 'monitor_focus': Jump when focus changes between monitors.
+    # - 'window_focus': Jump when focus changes between windows.
+    trigger: 'monitor_focus'
+
+  # How windows should be hidden when switching workspaces.
+  # - 'cloak': Recommended. Hides windows with no animation.
+  # - 'hide': Legacy method (v3.5 and earlier) that has a brief animation,
+  # but has stability issues with some apps.
+  hide_method: 'cloak'
+
+  # Affects which windows get shown in the native Windows taskbar. Has no
+  # effect if `hide_method: 'hide'`.
+  # - 'true': Show all windows (regardless of workspace).
+  # - 'false': Only show windows from the currently shown workspaces.
+  show_all_in_taskbar: false
+
+gaps:
+  # Whether to scale the gaps with the DPI of the monitor.
+  scale_with_dpi: true
+
+  # Gap between adjacent windows.
+  inner_gap: '10px'
+
+  # Gap between windows and the screen edge.
+  outer_gap:
+    top: '10px'
+    right: '15px'
+    bottom: '15px'
+    left: '15px'
+  
+  single_window_outer_gap:
+    top: '10px'
+    right: '10px'
+    bottom: '10px'
+    left: '10px'
+
+window_effects:
+  # Visual effects to apply to the focused window.
+  focused_window:
+    # Highlight the window with a colored border.
+    # ** Exclusive to Windows 11 due to API limitations.
+    border:
+      enabled: true
+      color: '#33ccff'
+
+    # Remove the title bar from the window's frame. Note that this can
+    # cause rendering issues for some applications.
+    hide_title_bar:
+      enabled: true
+
+    # Change the corner style of the window's frame.
+    # ** Exclusive to Windows 11 due to API limitations.
+    corner_style:
+      enabled: true
+      # Allowed values: 'square', 'rounded', 'small_rounded'.
+      style: 'rounded'
+
+    # Change the transparency of the window.
+    transparency:
+      enabled: false
+      # Can be something like '95%' or '0.95' for slightly transparent windows.
+      # '0' or '0%' is fully transparent (and, by consequence, unfocusable).
+      opacity: '95%'
+
+  # Visual effects to apply to non-focused windows.
+  other_windows:
+    border:
+      enabled: true
+      color: '#4c566a'
+    hide_title_bar:
+      enabled: true
+    corner_style:
+      enabled: true
+      style: 'rounded'
+    transparency:
+      enabled: true
+      opacity: '99%'
+
+window_behavior:
+  # New windows are created in this state whenever possible.
+  # Allowed values: 'tiling', 'floating'.
+  initial_state: 'tiling'
+
+  # Sets the default options for when a new window is created. This also
+  # changes the defaults for when the state change commands, like
+  # `set-floating`, are used without any flags.
+  state_defaults:
+    floating:
+      # Whether to center floating windows by default.
+      centered: false
+
+      # Whether to show floating windows as always on top.
+      shown_on_top: true
+
+    fullscreen:
+      # Maximize the window if possible. If the window doesn't have a
+      # maximize button, then it'll be fullscreen'ed normally instead.
+      maximized: true
+
+      # Whether to show fullscreen windows as always on top.
+      shown_on_top: true
+
+workspaces:
+  - name: '1'
+    keep_alive: true
+  - name: '2'
+    keep_alive: true
+  - name: '3'
+    keep_alive: true
+  - name: '4'
+    keep_alive: true
+  - name: '5'
+  - name: '6'
+  - name: '7'
+  - name: '8'
+  - name: '9'
+  - name: '10'
+  
+  - name: 'magic'
+    display_name: 'M'
+
+window_rules:
+  - commands: ['ignore']
+    match:
+      # Ignores any Zebar windows.
+      - window_process: { equals: 'zebar' }
+
+      # Ignores picture-in-picture windows for browsers.
+      - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
+        window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
+
+      # Ignore rules for various 3rd-party apps.
+      - window_process: { equals: 'PowerToys' }
+        window_class: { regex: 'HwndWrapper\[PowerToys\.PowerAccent.*?\]' }
+      - window_process: { equals: 'PowerToys' }
+        window_title: { regex: '.*? - Peek' }
+      - window_process: { equals: 'Lively' }
+        window_class: { regex: 'HwndWrapper' }
+      - window_process: { equals: 'EXCEL' }
+        window_class: { not_regex: 'XLMAIN' }
+      - window_process: { equals: 'WINWORD' }
+        window_class: { not_regex: 'OpusApp' }
+      - window_process: { equals: 'POWERPNT' }
+        window_class: { not_regex: 'PPTFrameClass' }
+        
+      - window_process: {regex: "VALORANT-Win64-Shipping|League of Legends|FPSAimTrainer-Win64-Shipping|csgo|javaw|DeadByDaylight-Win64-Shipping"}
+
+binding_modes:
+  # When enabled, the focused window can be resized via arrow keys or HJKL.
+  - name: 'resize'
+    keybindings:
+      - commands: ['resize --width -2%']
+        bindings: ['h', 'left']
+      - commands: ['resize --width +2%']
+        bindings: ['l', 'right']
+      - commands: ['resize --height +2%']
+        bindings: ['k', 'up']
+      - commands: ['resize --height -2%']
+        bindings: ['j', 'down']
+      # Press enter/escape to return to default keybindings.
+      - commands: ['wm-disable-binding-mode --name resize']
+        bindings: ['escape', 'enter']
+
+keybindings:
+  - commands: ['shell-exec wt']
+    bindings: ['lwin+enter']
+  - commands: ['shell-exec %ProgramFiles%\Firefox Developer Edition\firefox.exe']
+    bindings: ['lwin+b']
+  - commands: ['close']
+    bindings: ['lwin+c', 'lwin+q']
+  - commands: ['wm-exit']
+    bindings: ['lwin+shift+m']
+  - commands: ['toggle-fullscreen']
+    bindings: ['lwin+f']
+  - commands: ['toggle-tiling-direction']
+    bindings: ['lwin+j']
+  - commands: ['toggle-floating']
+    bindings: ['lwin+g']
+  - commands: ['toggle-floating --centered']
+    bindings: ['lwin+shift+g']
+
+  - commands: ['wm-toggle-pause']
+    bindings: ['lwin+m']
+  - commands: ['toggle-minimized']
+    bindings: ['lwin+z']
+  - commands: ['wm-reload-config']
+    bindings: ['alt+shift+r']
+  - commands: ['wm-redraw']
+    bindings: ['alt+shift+w']
+  # - commands: ['toggle-tiling']
+    # bindings: ['lwin+a']
+    
+  - commands: ['focus --direction left']
+    bindings: ['lwin+left']
+  - commands: ['focus --direction right']
+    bindings: ['lwin+right']
+  - commands: ['focus --direction up']
+    bindings: ['lwin+up']
+  - commands: ['focus --direction down']
+    bindings: ['lwin+down']
+  - commands: ['move --direction left']
+    bindings: ['lwin+shift+left']
+  - commands: ['move --direction right']
+    bindings: ['lwin+shift+right']
+  - commands: ['move --direction up']
+    bindings: ['lwin+shift+up']
+  - commands: ['move --direction down']
+    bindings: ['lwin+shift+down']
+    
+  - commands: ['focus --workspace 1']
+    bindings: ['lwin+1']
+  - commands: ['focus --workspace 2']
+    bindings: ['lwin+2']
+  - commands: ['focus --workspace 3']
+    bindings: ['lwin+3']
+  - commands: ['focus --workspace 4']
+    bindings: ['lwin+4']
+  - commands: ['focus --workspace 5']
+    bindings: ['lwin+5']
+  - commands: ['focus --workspace 6']
+    bindings: ['lwin+6']
+  - commands: ['focus --workspace 7']
+    bindings: ['lwin+7']
+  - commands: ['focus --workspace 8']
+    bindings: ['lwin+8']
+  - commands: ['focus --workspace 9']
+    bindings: ['lwin+9']
+  - commands: ['focus --workspace 10']
+    bindings: ['lwin+0']
+  - commands: ['focus --next-active-workspace']
+    bindings: ['lwin+page_down'] # lwin+wheel_down
+  - commands: ['focus --prev-active-workspace']
+    bindings: ['lwin+page_up'] # lwin+wheel_up
+    
+  - commands: ['move --workspace 1', 'focus --workspace 1']
+    bindings: ['lwin+shift+1']
+  - commands: ['move --workspace 2', 'focus --workspace 2']
+    bindings: ['lwin+shift+2']
+  - commands: ['move --workspace 3', 'focus --workspace 3']
+    bindings: ['lwin+shift+3']
+  - commands: ['move --workspace 4', 'focus --workspace 4']
+    bindings: ['lwin+shift+4']
+  - commands: ['move --workspace 5', 'focus --workspace 5']
+    bindings: ['lwin+shift+5']
+  - commands: ['move --workspace 6', 'focus --workspace 6']
+    bindings: ['lwin+shift+6']
+  - commands: ['move --workspace 7', 'focus --workspace 7']
+    bindings: ['lwin+shift+7']
+  - commands: ['move --workspace 8', 'focus --workspace 8']
+    bindings: ['lwin+shift+8']
+  - commands: ['move --workspace 9', 'focus --workspace 9']
+    bindings: ['lwin+shift+9']
+  - commands: ['move --workspace 10', 'focus --workspace 10']
+    bindings: ['lwin+shift+0']
+    
+  # - commands: ['focus --workspace magic']
+    # bindings: ['lwin+s']
+  # - commands: ['move --workspace magic', 'focus --workspace magic']
+    # bindings: ['lwin+shift+s']
