@@ -1,0 +1,10 @@
+{
+	"autosu": true,
+	"clipboard": "terminal",
+    "colorscheme": "nord-16",
+    "hltrailingws": true,
+    "mkparents": true,
+    "scrollbar": true,
+    "scrollbarchar": " ",
+    "showchars": "itab=->"
+}
