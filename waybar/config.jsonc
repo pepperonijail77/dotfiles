@@ -1,7 +1,8 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
+    // "height": 30, // Waybar height (to be removed for auto height)
+    // "height": 30, // Waybar height (to be removed for auto height)
     // "margin-top": 0,
     // "width": 1920, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
@@ -16,13 +17,11 @@
         "format": "{name}",
         "on-click": "activate",
 		"sort-by-number": true,
-        "format-icons": {
-            "default": " "
-        },
 		"persistent-workspaces": {
 			"1": [],
 			"2": [],
-			"3": []
+			"3": [],
+			"4": []
 		}
     },
     "keyboard-state": {
@@ -76,7 +75,8 @@
         "format-alt": "{:L%d %B %Y}", // "{:L%d/%m/%Y}"
         "tooltip": true,
         "tooltip-format": "<tt>{calendar}</tt>",
-        "interval": 1
+        "interval": 1,
+        "on-click-right": "pkill -x waybar && hyprctl dispatch exec waybar"
 	},
     "cpu": {
         "format": "{usage}% ",
@@ -105,18 +105,18 @@
         // "scroll-step": 1.0, // %, can be a float
         "format": "{icon}  {volume}%",
         "format-bluetooth": "{icon}  {volume}%",
-        "format-bluetooth-muted": "",
-        "format-muted": "",
+        "format-bluetooth-muted": " ",
+        "format-muted": " ",
         "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format-source-muted": " ",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": [" ", " ", " "]
         },
         "on-click": "pavucontrol"
     },
@@ -125,29 +125,33 @@
         "return-type": "json",
         "max-length": 40,
         "format-icons": {
-            "spotify": "",
-            "default": "🎜"
+            "spotify": " ",
+            "default": "🎜 "
         },
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
-    "custom/notification": {
-        "tooltip": false,
-        "format": "{icon}",
-        "format-icons": {
-          "notification": "<span foreground='red'><sup></sup></span>",
-          "none": "",
-          "dnd-notification": "<span foreground='red'><sup></sup></span>",
-          "dnd-none": ""
-        },
-        "return-type": "json",
-        // "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "swaync-client -t -sw",
-        "on-click-right": "swaync-client -d -sw",
-        "escape": true
-    },
+	"custom/notification": {
+		"tooltip": true,
+		"format": "<span size='16pt'>{icon}</span>",
+		"format-icons": {
+			"notification": "󱅫",
+			"none": "󰂜",
+			"dnd-notification": "󰂠",
+			"dnd-none": "󰪓",
+			"inhibited-notification": "󰂛 ",
+			"inhibited-none": "󰪑 ",
+			"dnd-inhibited-notification": "󰂛 ",
+			"dnd-inhibited-none": "󰪑 "
+		},
+		"return-type": "json",
+		"exec-if": "which swaync-client",
+		"exec": "swaync-client -swb",
+		"on-click": "swaync-client -t -sw",
+		"on-click-right": "swaync-client -d -sw",
+		"escape": true
+	},
     "custom/lang": {
         "exec": " hyprctl devices | grep -w \"at-translated-set-2-keyboard\" -A 3 | grep -w \"active keymap:\" | cut -d ' ' -f 3 | cut -c 1-2 | awk '{ print toupper($0) }' ",
         "interval": 1
@@ -155,7 +159,7 @@
     "custom/power": {
     	"tooltip": false,
     	"format": "⏻",
-    	"on-click": "nwg-bar"
+    	"on-click": "case $(printf \"Shutdown\\nReboot\\nLogout\\nLock\" | rofi -dmenu) in *Shutdown*) systemctl poweroff --no-wall ;; *Reboot*) systemctl reboot --no-wall ;; *Logout*) hyprctl dispatch exit ;; *Lock*) hyprlock ;; esac"
     },
     "custom/updates": {
         "format": "{} {icon}",
