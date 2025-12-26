@@ -159,7 +159,7 @@
     "custom/power": {
     	"tooltip": false,
     	"format": "⏻",
-    	"on-click": "case $(printf \"Shutdown\\nReboot\\nLogout\\nLock\" | rofi -dmenu) in *Shutdown*) systemctl poweroff --no-wall ;; *Reboot*) systemctl reboot --no-wall ;; *Logout*) hyprctl dispatch exit ;; *Lock*) hyprlock ;; esac"
+    	"on-click": "~/.config/rofi/powermenu.sh"
     },
     "custom/updates": {
         "format": "{} {icon}",

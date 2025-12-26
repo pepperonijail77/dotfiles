@@ -16,8 +16,8 @@ configuration {
 * {
     /* Resolution : 1920x1080 */
     mainbox-spacing:             100px;
-    mainbox-margin:              150px 400px;
-    message-margin:              0px 350px;
+    mainbox-margin:              250px 300px;
+    message-margin:              0px 250px;
     message-padding:             15px;
     message-border-radius:       15px;
     listview-spacing:            50px;
@@ -29,8 +29,8 @@ configuration {
     element-text-font:           "feather 64";
 
     background-window:           black/30%;
-    background-normal:           white/5%;
-    background-selected:         white/15%;
+    background-normal:           white/20%;
+    background-selected:         white/45%;
     foreground-normal:           white;
     foreground-selected:         white;
 }
@@ -50,13 +50,14 @@ mainbox {
     enabled:                     true;
     spacing:                     var(mainbox-spacing);
     margin:                      var(mainbox-margin);
-    background-color:            transparent;
+    background-color:            var(background-window);
+    border-radius:               28px;
     children:                    [ "dummy", "inputbar", "listview", "message", "dummy" ];
 }
 
 /*****----- Inputbar -----*****/
 inputbar {
-    enabled:                     true;
+    enabled:                     false;
     background-color:            transparent;
     children:                    [ "dummy", "prompt", "dummy"];
 }
@@ -102,6 +103,7 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
+    margin:                      0px 100px;
     
     spacing:                     var(listview-spacing);
     background-color:            transparent;
