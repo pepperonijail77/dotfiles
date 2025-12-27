@@ -59,28 +59,14 @@ window#waybar.hidden {
     color: #2e3440;
 }
 
-/** ********** Backlight ********** **/
-#backlight {
-	background-color: #cba6f7;
-}
-
 /** ********** Clock ********** **/
 #clock {
 	background-color: #3b4252;
+	font-size: 20px;
 }
 
 /** ********** CPU ********** **/
 #cpu {
-	background-color: #3b4252;
-}
-
-/** ********** Memory ********** **/
-#memory {
-	background-color: #3b4252;
-}
-
-/** ********** Disk ********** **/
-#disk {
 	background-color: #3b4252;
 }
 
@@ -102,27 +88,6 @@ window#waybar.hidden {
 #tray > .active {
 }
 
-/** ********** MPD ********** **/
-#mpd {
-	background-color: #3b4252;
-}
-
-#mpd.disconnected {
-	background-color: #3b4252;
-}
-
-#mpd.stopped {
-	background-color: #3b4252;
-}
-
-#mpd.playing {
-	background-color: #a3be8c;
-}
-
-#mpd.paused {
-	background-color: #b48ead;
-}
-
 /** ********** Pulseaudio ********** **/
 #pulseaudio {
 	background-color: #3b4252;
@@ -135,56 +100,25 @@ window#waybar.hidden {
 	background-color: #bf616a;
 }
 
-/** ********** Network ********** **/
-#network {
-	background-color: #3b4252;
-}
-
-#network.disconnected,#network.disabled {
-	background-color: #bf616a;
-}
-
-#network.linked {
-}
-
-#network.ethernet {
-	background-color: #a3be8c;
-}
-
-#network.wifi {
-	background-color: #a3be8c;
-}
-
 /** ********** Custom ********** **/
-#custom-menu, #custom-power, #custom-notification, #custom-lang, #custom-updates {
+#custom-power, #custom-notification, #custom-updates {
 	border-radius: 4px;
 	margin: 6px 0px;
 	padding: 2px 8px;
 	font-size: 16pt;
 }
 
-#custom-menu {
-	background-color: #3b4252;
-	/* margin-left: 6px; */
-	padding: 2px 6px;
-}
-
 #custom-power {
 	background-color: #d8dee9;
 	color: #2e3440;
-	margin-right: 6px;
+	margin: 6px;
 	padding: 2px 8px;
+	font-size: 22px;
 }
 
 #custom-notification {
-    padding: 2px 8px;
-    margin-right: 6px;
-    background-color: #434c5e;
-}
-
-#custom-lang {
+    padding: 2px 11px 2px 8px;
     background-color: #3b4252;
-    /* padding: 0; */
 }
 
 #custom-updates {
@@ -192,17 +126,11 @@ window#waybar.hidden {
 }
 
 /** Common style **/
-#backlight, 
-#battery,
 #clock,
 #cpu,
-#disk,
-#mode,
 #memory,
-#mpd,
 #tray,
-#pulseaudio,
-#network {
+#pulseaudio {
 	border-radius: 4px;
 	margin: 6px 0px;
 	padding: 2px 8px;
