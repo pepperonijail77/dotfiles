@@ -95,7 +95,7 @@
         },
         "exec-if": "which waybar-module-pacman-updates",
         "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300 --tooltip-align-columns",
-        "on-click": "kitty bash -c \"yay -Syu && flatpak update && asdf plugin update --all\""
+        "on-click": "kitty bash -c \"yay -Syu && flatpak update && for tool in $(asdf plugin list); do asdf install \"${tool}\" latest; done\""
     },
 }
 
