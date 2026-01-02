@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-
-#
 # ~/.bashrc
 #
 
@@ -30,17 +28,9 @@ shopt -s checkwinsize
 shopt -s histappend
 PROMPT_COMMAND='history -a'
 
-# set up XDG folders
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_CACHE_HOME="$HOME/.cache"
-
 if [[ $- == *i* ]]; then bind "set completion-ignore-case on"; fi
 
-# Set the default editor
-export EDITOR=micro
-export VISUAL=micro
+# Set editor shortcut aliases
 alias mic='micro'
 alias smic='sudo micro'
 alias vim='nvim'
@@ -63,11 +53,7 @@ function activate {
 		source .qtcreator/Python_*venv/bin/activate
 	fi
 }
-
-# alias activate='source .venv/bin/activate'
-
-# Set the default browser
-export BROWSER=firefox-developer-edition
+#alias activate='source .venv/bin/activate'
 
 # To have colors for ls and grep
 export CLICOLOR=1
@@ -87,7 +73,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 
 # aliases to modified commands
 alias cp='cp -i'
@@ -143,12 +128,15 @@ extract() {
 # IP address lookup
 alias ipaddress='curl -4 ifconfig.me; echo'
 
+alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+
 # bind "set bell-style visible"
 
 # Bash prompt
 #PS1='[\u@\h \W]\$ '
 PS1='[\[\e[34m\]\u@\h \[\e[94;1m\]\W\[\e[0m\]]\$ '
 
+# Bash completions
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
