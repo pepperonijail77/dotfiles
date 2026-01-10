@@ -1,10 +1,10 @@
 :root {
-  --border-radius: 18px;
   --cc-bg: transparent;
+  --noti-bg: 59, 66, 82;
+  --noti-bg-alpha: 0.7;
+  --noti-bg-hover: rgb(67, 76, 94);
 
-  --widget-background: rgba(46, 46, 46, 0.7);
-  --noti-bg-alpha: 0.6;
-
+  --border-radius: 18px;
   --padding: 9px;
 }
 
@@ -15,7 +15,7 @@
 .widgets > .widget,
 .widget-mpris > carouselindicatordots,
 .widget-mpris > box > button {
-  background: var(--widget-background);
+  background: rgba(46, 52, 64, 0.8);
   border-radius: var(--border-radius);
   padding: var(--padding);
   border: var(--border);
@@ -28,6 +28,7 @@
 .notification-group {
   border-radius: var(--border-radius);
   padding: 8px;
+  background: transparent;
 }
 
 .widget.widget-title {
@@ -38,6 +39,23 @@
 
 .widget-title > label {
 	font-size: 20px;
+}
+
+.widget.widget-inhibitors > label,
+.widget.widget-dnd > label,
+.widget.widget-title > label,
+.text-button > label,
+.notification-group-header {
+	color: rgb(236, 239, 244);
+}
+
+.summary,
+.time {
+	color: rgb(229,233,240);
+}
+
+.body {
+	color: rgb(216,222,233);
 }
 
 .widget.widget-notifications {
