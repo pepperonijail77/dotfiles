@@ -1,67 +1,69 @@
 {
-    "reload_style_on_change": true,
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    // "height": 30, // Waybar height (to be removed for auto height)
-    // "height": 30, // Waybar height (to be removed for auto height)
-    // "margin-top": 0,
-    // "width": 1920, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["clock"],
-    "modules-right": ["tray", "custom/updates", "pulseaudio", "cpu", "custom/notification", "custom/power"], // "custom/lang", "mpd", "custom/menu",
-    // Modules configuration
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{name}",
-        "on-click": "activate",
+	"reload_style_on_change": true,
+	"layer": "top", // Waybar at top layer
+	"position": "top", // Waybar position (top|bottom|left|right)
+	// "height": 30, // Waybar height (to be removed for auto height)
+	// "height": 30, // Waybar height (to be removed for auto height)
+	// "margin-top": 0,
+	// "width": 1920, // Waybar width
+	"spacing": 4, // Gaps between modules (4px)
+	"modules-left": ["hyprland/workspaces"],
+	"modules-center": ["clock"],
+	"modules-right": [
+		"tray",
+		"custom/updates",
+		"pulseaudio",
+		"cpu",
+		"custom/notification",
+		"custom/power",
+	], // "custom/lang", "mpd", "custom/menu",
+	// Modules configuration
+	"hyprland/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"format": "{name}",
+		"on-click": "activate",
 		"sort-by-number": true,
-		"persistent-workspaces": {
-			"1": [],
-			"2": [],
-			"3": [],
-			"4": []
-		}
-    },
-    "tray": {
-        // "icon-size": 21,
-        "show-passive-icons": true,
-        "spacing": 12
-    },
-    "clock": {
-        "format": "{:L%H:%M:%S}",
-        "format-alt": "{:L%A %d %B %Y}", // "{:L%d/%m/%Y}"
-        "tooltip": true,
-        "tooltip-format": "<tt>{calendar}</tt>",
-        "interval": 1,
-        "on-click-right": "pkill -x waybar && hyprctl dispatch exec waybar"
+		"persistent-workspaces": {"1": [], "2": [], "3": [], "4": []},
 	},
-    "cpu": {
-        "format": "  {usage}%",
-        "tooltip": false,
-        "on-click": "kitty btop"
-    },
-    "pulseaudio": {
-        // "scroll-step": 1.0, // %, can be a float
-        "format": "{icon}  {volume}%",
-        "format-bluetooth": "{icon}  {volume}%",
-        "format-bluetooth-muted": " ",
-        "format-muted": " ",
-        "format-source": "{volume}% ",
-        "format-source-muted": " ",
-        "format-icons": {
-            "headphone": " ",
-            "hands-free": " ",
-            "headset": " ",
-            "phone": " ",
-            "portable": " ",
-            "car": " ",
-            "default": [" ", " ", " "]
-        },
-        "on-click": "pavucontrol"
-    },
-   	"custom/notification": {
+	"tray": {
+		// "icon-size": 21,
+		"show-passive-icons": true,
+		"spacing": 12,
+	},
+	"clock": {
+		"format": "{:L%H:%M:%S}",
+		"format-alt": "{:L%A %d %B %Y}", // "{:L%d/%m/%Y}"
+		"tooltip": true,
+		"tooltip-format": "<tt>{calendar}</tt>",
+		"interval": 1,
+		"on-click-right": "pkill -x waybar && hyprctl dispatch exec waybar",
+	},
+	"cpu": {
+		"format": "  {usage}%",
+		"tooltip": false,
+		"on-click": "kitty btop",
+	},
+	"pulseaudio": {
+		// "scroll-step": 1.0, // %, can be a float
+		"format": "{icon}  {volume}%",
+		"format-bluetooth": "{icon}  {volume}%",
+		"format-bluetooth-muted": " ",
+		"format-muted": " ",
+		"format-source": "{volume}% ",
+		"format-source-muted": " ",
+		"format-icons": {
+			"headphone": " ",
+			"hands-free": " ",
+			"headset": " ",
+			"phone": " ",
+			"portable": " ",
+			"car": " ",
+			"default": [" ", " ", " "],
+		},
+		"on-click": "pavucontrol",
+	},
+	"custom/notification": {
 		"tooltip": true,
 		"format": "<span size='16pt'>{icon}</span>",
 		"format-icons": {
@@ -72,31 +74,28 @@
 			"inhibited-notification": "󰂛 ",
 			"inhibited-none": "󰪑 ",
 			"dnd-inhibited-notification": "󰂛 ",
-			"dnd-inhibited-none": "󰪑 "
+			"dnd-inhibited-none": "󰪑 ",
 		},
 		"return-type": "json",
 		"exec-if": "which swaync-client",
 		"exec": "swaync-client -swb",
 		"on-click": "swaync-client -t -sw",
 		"on-click-right": "swaync-client -d -sw",
-		"escape": true
+		"escape": true,
 	},
-    "custom/power": {
-    	"tooltip": false,
-    	"format": "⏻",
-    	"on-click": "~/.config/rofi/powermenu.sh"
-    },
-    "custom/updates": {
-        "format": "{} {icon}",
-        "return-type": "json",
-        "format-icons": {
-            "has-updates": "󱍷",
-            "updated": "󰂪"
-        },
-        "exec-if": "which waybar-module-pacman-updates",
-        "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300 --tooltip-align-columns",
-        "on-click": "kitty bash -c \"yay -Syu && flatpak update && for tool in $(asdf plugin list); do asdf install \"${tool}\" latest; done\""
-    },
+	"custom/power": {
+		"tooltip": false,
+		"format": "⏻",
+		"on-click": "~/.config/rofi/powermenu.sh",
+	},
+	"custom/updates": {
+		"format": "{} {icon}",
+		"return-type": "json",
+		"format-icons": {"has-updates": "󱍷", "updated": "󰂪"},
+		"exec-if": "which waybar-module-pacman-updates",
+		"exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300 --tooltip-align-columns",
+		"on-click": "kitty ~/.local/bin/update",
+	},
 }
 
 // hyprctl devices | grep -w "7d224880" -A 3 | grep -w "active keymap:" | cut -d ' ' -f 3 | cut -c 1-2 | awk '{ print toupper($0) }'

@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+yay -Syu
+flatpak update
+for tool in $(asdf plugin list); do
+	asdf install "${tool}" latest;
+done
+hyprpm update
