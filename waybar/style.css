@@ -1,14 +1,15 @@
-/** ********** Fonts ********** **/
+/** Fonts **/
 * {
-    font-family: "JetBrainsMonoNF Regular";
-    font-size: 18px;
+    font-family: "JetBrainsMono Nerd Font Propo";
+    font-size: 20px;
 }
 
-/** ********** Waybar Window ********** **/
+/** Waybar Window **/
 window#waybar {
     background-color: #2e3440;
     color: #eceff4;
-    border-bottom: 2px solid #2e3440;
+    border-radius: 0px;
+    /* border: 2px solid #3b4252; */
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -17,7 +18,7 @@ window#waybar.hidden {
     opacity: 0.5;
 }
 
-/** ********* Workspaces ********** **/
+/** Workspaces **/
 
 #workspaces {
 	margin: 6px;
@@ -59,18 +60,35 @@ window#waybar.hidden {
     color: #2e3440;
 }
 
-/** ********** Clock ********** **/
+/** Clock **/
 #clock {
-	background-color: #3b4252;
-	font-size: 20px;
+	/* background-color: #3b4252; 
+	 * font-size: 20px; 
+	 * border-radius: 4px; 
+	 * margin: 6px 1px; 
+	 * padding: 2px 6px;
+	 */
 }
 
-/** ********** CPU ********** **/
+/** Right modules **/
+#cpu,
+#memory,
+#tray,
+#pulseaudio,
+#custom-update,
+#custom-notification,
+#custom-power {
+	border-radius: 4px;
+	margin: 6px 1px;
+	padding: 2px 6px;
+}
+
+/** CPU **/
 #cpu {
 	background-color: #3b4252;
 }
 
-/** ********** Tray ********** **/
+/** Tray **/
 #tray {
 	background-color: #3b4252;
 }
@@ -88,7 +106,7 @@ window#waybar.hidden {
 #tray > .active {
 }
 
-/** ********** Pulseaudio ********** **/
+/** Pulseaudio **/
 #pulseaudio {
 	background-color: #3b4252;
 }
@@ -100,38 +118,27 @@ window#waybar.hidden {
 	background-color: #bf616a;
 }
 
-/** ********** Custom ********** **/
+/** Custom **/
 #custom-power, #custom-notification, #custom-updates {
 	border-radius: 4px;
 	margin: 6px 0px;
 	padding: 2px 8px;
-	font-size: 16pt;
+	font-size: 20px;
 }
 
 #custom-power {
 	background-color: #d8dee9;
-	color: #2e3440;
+	color: #3b4252;
 	margin: 6px;
 	padding: 2px 8px;
-	font-size: 22px;
+	font-size: 20px;
 }
 
 #custom-notification {
-    padding: 2px 11px 2px 8px;
+    padding: 2px 8px;
     background-color: #3b4252;
 }
 
 #custom-updates {
     background-color: #3b4252;
-}
-
-/** Common style **/
-#clock,
-#cpu,
-#memory,
-#tray,
-#pulseaudio {
-	border-radius: 4px;
-	margin: 6px 0px;
-	padding: 2px 8px;
 }
