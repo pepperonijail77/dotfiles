@@ -61,20 +61,20 @@ window#waybar.hidden {
 }
 
 /** Clock **/
-#clock {
-	/* background-color: #3b4252; 
-	 * font-size: 20px; 
-	 * border-radius: 4px; 
-	 * margin: 6px 1px; 
-	 * padding: 2px 6px;
-	 */
-}
+/* #clock {
+	background-color: #3b4252; 
+	font-size: 20px; 
+	border-radius: 4px; 
+	margin: 6px 1px; 
+	padding: 2px 6px;
+} */
 
 /** Right modules **/
 #cpu,
 #memory,
 #tray,
 #pulseaudio,
+#battery,
 #custom-update,
 #custom-notification,
 #custom-power {
@@ -85,6 +85,16 @@ window#waybar.hidden {
 
 /** CPU **/
 #cpu {
+	background-color: #3b4252;
+}
+
+/** Memory **/
+#memory {
+	background-color: #3b4252;
+}
+
+/** Battery **/
+#battery {
 	background-color: #3b4252;
 }
 
@@ -103,8 +113,8 @@ window#waybar.hidden {
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
 }
-#tray > .active {
-}
+/* #tray > .active {
+} */
 
 /** Pulseaudio **/
 #pulseaudio {
