@@ -42,7 +42,7 @@ hl.config({
             size      = 3,
             passes    = 4,
             vibrancy  = 0.1696,
-            popups    = false
+            popups    = false,
         },
 
         shadow = {

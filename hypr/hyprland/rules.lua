@@ -1,35 +1,29 @@
----------------
----- RULES ----
----------------
-
--- https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
-
-hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
-hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
-
--- https://wiki.hypr.land/Configuring/Basics/Window-Rules/
-
-hl.window_rule({
-    name  = "no-gaps-wtv1",
-    match = { float = false, workspace = "w[tv1]" },
-    -- border_size = 0,
-    rounding    = 0,
-})
-
-hl.window_rule({
-    name  = "no-gaps-f1",
-    match = { float = false, workspace = "f[1]" },
-    -- border_size = 0,
-    rounding    = 0,
-})
-
-
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
 
 -- https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
+
+hl.workspace_rule({ workspace = "w[tv1] s[0]", gaps_out = 0, gaps_in = 0 })
+hl.workspace_rule({ workspace = "f[1] s[0]",   gaps_out = 0, gaps_in = 0 })
+hl.workspace_rule({ workspace = "s[1]",        gaps_out = 15 })
+
+hl.window_rule({
+    name  = "no-gaps-wtv1",
+    match = { float = false, workspace = "w[tv1] s[0]" },
+
+    -- border_size = 0,
+    rounding    = 0,
+})
+
+hl.window_rule({
+    name  = "no-gaps-f1",
+    match = { float = false, workspace = "f[1] s[0]" },
+
+    -- border_size = 0,
+    rounding    = 0,
+})
 
 hl.window_rule({
     name  = "suppress-maximize-events",
@@ -76,3 +70,30 @@ hl.window_rule({
 
 --     hyprbars:no_bar = true,
 -- })
+
+hl.layer_rule({
+    name  = "swaync",
+    match = { namespace = "swaync-control-center" },
+
+    blur         = true,
+    ignore_alpha = 0,
+    animation    = "slide top",
+})
+
+hl.layer_rule({
+    name  = "rofi",
+    match = { namespace = "rofi" },
+
+    blur         = true,
+    ignore_alpha = 0,
+    animation    = "popin",
+})
+
+hl.layer_rule({
+    name  = "swayosd",
+    match = { namespace = "swayosd" },
+
+    blur         = true,
+    ignore_alpha = 0,
+    animation    = "slide top",
+})
