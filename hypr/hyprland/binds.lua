@@ -70,8 +70,8 @@ hl.bind("SUPER + ALT + SHIFT + S", hl.dsp.window.move({ workspace = "special:mag
 
 hl.bind("SUPER + Tab",         hl.dsp.focus({ workspace = "e+1" }))
 hl.bind("SUPER + SHIFT + Tab", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind("SUPER + mouse_down",  hl.dsp.focus({ workspace = "e+1" }))
-hl.bind("SUPER + mouse_up",    hl.dsp.focus({ workspace = "e-1" }))
+hl.bind("SUPER + mouse_up",    hl.dsp.focus({ workspace = "e+1" }))
+hl.bind("SUPER + mouse_down",  hl.dsp.focus({ workspace = "e-1" }))
 hl.bind("ALT + Tab",           function ()
     hl.dispatch(hl.dsp.window.cycle_next())
     hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))

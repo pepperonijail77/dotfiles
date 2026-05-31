@@ -64,12 +64,12 @@ hl.window_rule({
     min_size        = {0, 198},
 })
 
--- hl.window_rule({
---     name  = "bars",
---     match = { tag = "negative:bar" },
+hl.window_rule({
+    name  = "bars",
+    match = { tag = "negative:bar" },
 
---     hyprbars:no_bar = true,
--- })
+    ['hyprbars:no_bar'] = true,
+})
 
 hl.layer_rule({
     name  = "swaync",
