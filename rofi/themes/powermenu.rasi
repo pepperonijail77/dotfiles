@@ -42,7 +42,7 @@ window {
     anchor:                      center;
     fullscreen:                  true;
     cursor:                      "default";
-    background-color:            var(background-window);
+    background-color:            transparent;
 }
 
 /*****----- Main Box -----*****/
