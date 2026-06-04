@@ -28,7 +28,7 @@ configuration {
     textbox-font:                "MesloLGS Nerd Font 14";
     element-text-font:           "feather 64";
 
-    background-window:           black/30%;
+    background-window:           black/50%;
     background-normal:           white/20%;
     background-selected:         white/45%;
     foreground-normal:           white;
