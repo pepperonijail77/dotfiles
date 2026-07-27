@@ -50,26 +50,30 @@ run_cmd() {
 			systemctl suspend
 			;;
 		--logout)
-			case "$DESKTOP_SESSION" in
-				hyprland | hyprland-uwsm)
-					hyprctl dispatch exit
-					;;
-				openbox)
-					openbox --exit
-					;;
-				bspwm)
-					bspc quit
-					;;
-				dwm)
-					pkill dwm
-					;;
-				i3)
-					i3-msg exit
-					;;
-				plasma)
-					qdbus org.kde.ksmserver /KSMServer logout 0 0 0
-					;;
-			esac
+			if uwsm check is-active; then 
+				uwsm stop
+			else
+				case "$DESKTOP_SESSION" in
+					hyprland)
+						hyprctl dispatch 'hl.dsp.exit()'
+						;;
+					openbox)
+						openbox --exit
+						;;
+					bspwm)
+						bspc quit
+						;;
+					dwm)
+						pkill dwm
+						;;
+					i3)
+						i3-msg exit
+						;;
+					plasma)
+						qdbus org.kde.ksmserver /KSMServer logout 0 0 0
+						;;
+				esac
+			fi
 			;;
 	esac
 }
