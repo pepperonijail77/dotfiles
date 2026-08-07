@@ -1,9 +1,9 @@
 timeout 300 'pidof hyprlock || uwsm-app -- hyprlock'
-# timeout 600 'wlr-dpms off' resume 'wlr-dpms on'
-timeout 600 "hyprctl dispatch 'hl.dsp.dpms({action = \"disable\"})'" resume "hyprctl dispatch 'hl.dsp.dpms({action = \"enable\"})'"
+timeout 600 'wlr-dpms off' resume 'wlr-dpms on'
+# timeout 600 "hyprctl dispatch 'hl.dsp.dpms({action = \"disable\"})'" resume "hyprctl dispatch 'hl.dsp.dpms({action = \"enable\"})'"
 
 
 lock "pidof hyprlock || uwsm-app -- hyprlock"
 before-sleep 'pidof hyprlock || uwsm-app -- hyprlock'
-# after-resume 'wlr-dpms on'
-after-resume hyprctl dispatch 'hl.dsp.dpms({action = "enable"})'
+after-resume 'wlr-dpms on'
+# after-resume hyprctl dispatch 'hl.dsp.dpms({action = "enable"})'

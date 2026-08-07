@@ -15,6 +15,7 @@ logout='󰍃'
 
 # Rofi CMD
 rofi_cmd() {
+	# pkill rofi
 	rofi -dmenu \
 		-p "" \
 		-mesg "Uptime: $uptime" \

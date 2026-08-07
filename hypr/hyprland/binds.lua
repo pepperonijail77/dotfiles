@@ -9,7 +9,7 @@ local menu        = "rofi -show drun -run-command \"uwsm-app -- {cmd}\""
 local runner      = "hyprland-run"
 local window      = "rofi -show window"
 local lock        = "hyprlock"
-local screenshot  = "hyprshot"
+local screenshot  = "grim"
 local mail        = "flatpak run com.tutanota.Tutanota --password-store=basic"
 local calculator  = "qalculate-gtk"
 
@@ -41,9 +41,9 @@ hl.bind("SUPER + J",           hl.dsp.layout("togglesplit"))
 hl.bind("SUPER + F",           hl.dsp.window.fullscreen())
 hl.bind("SUPER + SHIFT + F",   hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind("SUPER + L",           run(lock))
-hl.bind("Print",               run(screenshot .. " -m output"))
-hl.bind("SHIFT + Print",       run(screenshot .. " -m region"))
-hl.bind("ALT + Print",         run(screenshot .. " -m window"))
+hl.bind("Print",               hl.dsp.exec_cmd(screenshot .. " -o \"$(mmsg get all-monitors | jq -r '.monitors[] | select(.active) | .name')\" - | tee $(xdg-user-dir PICTURES)/Screenshots/$(date +%Y%m%d_%H%M%S_grim.png) | wl-copy"))
+hl.bind("SHIFT + Print",       hl.dsp.exec_cmd(screenshot .. " -g "$(slurp)" - | tee $(xdg-user-dir PICTURES)/Screenshots/$(date +%Y%m%d_%H%M%S_grim.png) | wl-copy"))
+hl.bind("ALT + Print",         hl.dsp.exec_cmd(screenshot .. " -T $(mmsg get focusing-client | jq -r '.foreign_toplevel_id') - | tee $(xdg-user-dir PICTURES)/Screenshots/$(date +%Y%m%d_%H%M%S_grim.png) | wl-copy"))
 hl.bind("SUPER + V",           run("clipvault list | rofi -dmenu -p 󱘟 -display-columns 2 | clipvault get | wl-copy"))
 hl.bind("SUPER + H",           hl.dsp.window.tag({ tag = "bar" }))
 hl.bind("SUPER + K",           hl.dsp.exec_cmd("hyprctl kill"))
