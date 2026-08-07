@@ -8,7 +8,7 @@
 	// "margin-right": 10,
 	// "width": 1920, // Waybar width
 	"spacing": 4, // Gaps between modules (4px)
-	"modules-left": ["hyprland/workspaces"], // "hyprland/window"
+	"modules-left": ["mango/workspaces", "hyprland/workspaces"], // "mango/window", "hyprland/window"
 	"modules-center": ["clock"],
 	"modules-right": [
 		"tray",
@@ -17,24 +17,41 @@
 		"memory",
 		"battery",
 		"custom/notification",
-		"custom/power"
-	], // "custom/lang", "cpu", "mpd", "custom/menu"
+		"custom/power",
+	], // "mango/keymode", "mango/language", "custom/lang", "cpu", "mpd", "custom/menu"
 	// Modules configuration
+	"mango/workspaces": {
+		"format": "{icon}",
+		"hide-empty": true,
+		"on-click": "activate",
+		"on-click-right": "toggle",
+		"overview-label": "OVERVIEW",
+	},
+	"mango/keymode": {
+		"format": "{}",
+		// "format-default": " Default",
+	},
+	"mango/window": {"format": "{}", "icon-size": 20},
+	"mango/layout": {
+		"format": "{}",
+		"format-S": "Scroller",
+		"format-T": "Tile",
+		"format-F": "Fair",
+		"format-DW": "Dwindle",
+	},
+	"mango/language": {"format": "{short}"},
 	"hyprland/workspaces": {
 		"all-outputs": true,
 		"format": "{name}",
 		"on-click": "activate",
 		"sort-by-number": true,
-		"persistent-workspaces": {"1": [], "2": [], "3": [], "4": []}
+		"persistent-workspaces": {"1": [], "2": [], "3": [], "4": []},
 	},
-	"hyprland/window": {
-		"format": "{title}",
-		"separate-outputs": true
-	},
+	"hyprland/window": {"format": "{title}", "separate-outputs": true},
 	"tray": {
 		// "icon-size": 21,
 		"show-passive-icons": true,
-		"spacing": 12
+		"spacing": 12,
 	},
 	"clock": {
 		"format": "{:L%H:%M:%S}",
@@ -42,7 +59,7 @@
 		"tooltip": true,
 		"tooltip-format": "<tt>{calendar}</tt>",
 		"interval": 1,
-		"on-click-right": "pkill -x waybar && hyprctl dispatch \"hl.dsp.exec_cmd(\\\"uwsm-app -- waybar\\\")\""
+		"on-click-right": "pkill -x waybar && waybar",
 	},
 	"memory": {
 		"interval": 10,
@@ -50,7 +67,7 @@
 		"max-length": 10,
 		"tooltip": true,
 		"tooltip-format": "{used}GiB / {total}GiB",
-		"on-click": "kitty btop"
+		"on-click": "kitty btop",
 	},
 	"pulseaudio": {
 		// "scroll-step": 1.0, // %, can be a float
@@ -67,19 +84,19 @@
 			"phone": "󰏲",
 			"portable": "󰏲",
 			"car": "󰄋",
-			"default": ["󰕿", "󰖀", "󰕾"]
+			"default": ["󰕿", "󰖀", "󰕾"],
 		},
-		"on-click": "pavucontrol"
+		"on-click": "pavucontrol",
 	},
 	"battery": {
 		"interval": 30,
 		"format": "{icon} {capacity}%",
 		"format-icons": {
 			"default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-			"charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+			"charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
 		},
 		"tooltip-format": "{timeTo}\n{health}%",
-		"max-length": 25
+		"max-length": 25,
 	},
 	"custom/notification": {
 		"tooltip": true,
@@ -92,19 +109,19 @@
 			"inhibited-notification": "󰂛",
 			"inhibited-none": "󰪑",
 			"dnd-inhibited-notification": "󰂛",
-			"dnd-inhibited-none": "󰪑"
+			"dnd-inhibited-none": "󰪑",
 		},
 		"return-type": "json",
 		"exec-if": "which swaync-client",
 		"exec": "swaync-client -swb",
 		"on-click": "swaync-client -t -sw",
 		"on-click-right": "swaync-client -d -sw",
-		"escape": true
+		"escape": true,
 	},
 	"custom/power": {
 		"tooltip": false,
 		"format": "󰐥",
-		"on-click": "~/.config/rofi/powermenu.sh"
+		"on-click": "~/.config/rofi/powermenu.sh",
 	},
 	"custom/updates": {
 		"format": "{icon} {0}",
@@ -112,8 +129,8 @@
 		"format-icons": {"has-updates": "󰚰", "updated": "󰇠"},
 		"exec-if": "which waybar-module-pacman-updates",
 		"exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300 --tooltip-align-columns",
-		"on-click": "kitty ~/.local/bin/update"
-	}
+		"on-click": "kitty ~/.local/bin/update",
+	},
 }
 
 // hyprctl devices | grep -w "7d224880" -A 3 | grep -w "active keymap:" | cut -d ' ' -f 3 | cut -c 1-2 | awk '{ print toupper($0) }'
