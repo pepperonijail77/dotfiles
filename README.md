@@ -1,5 +1,5 @@
 # Dotfiles
 
-Just my dotfiles for Arch (btw) + Hyprland.
+Just my dotfiles for Arch + Mango.
 
 ![](./screenshot.png)
