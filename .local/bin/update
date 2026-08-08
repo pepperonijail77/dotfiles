@@ -5,4 +5,4 @@ flatpak update -uy
 for tool in $(asdf plugin list); do
 	asdf install "${tool}" latest;
 done
-hyprpm update
+# hyprpm update
