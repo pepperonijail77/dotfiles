@@ -1,0 +1,9 @@
+### Autostart configuration
+
+exec swayidle
+exec waybar
+exec wl-clip-persist --clipboard regular
+exec swaync
+exec swayosd-server
+exec /lib/hyprpolkitagent/hyprpolkitagent
+exec wl-paste --watch clipvault store

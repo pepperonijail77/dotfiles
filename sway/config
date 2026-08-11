@@ -1,0 +1,9 @@
+include sway/variables
+# include /etc/sway/config-vars.d/*
+
+include sway/output
+include sway/input
+include sway/autostart
+include sway/binds
+
+include /etc/sway/config.d/*

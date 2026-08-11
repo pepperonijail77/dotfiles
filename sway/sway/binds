@@ -1,0 +1,7 @@
+### Key bindings
+
+bindsym Mod4+Return exec kitty
+
+bindsym Mod4+c kill
+
+bindsym Mod4+space exec rofi -show dmenu

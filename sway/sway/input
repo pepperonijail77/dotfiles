@@ -1,0 +1,22 @@
+### Input configuration
+
+input type:keyboard {
+	repeat_delay 600
+	repeat_rate 25
+
+	xkb_layout us
+	xkb_options compose:ralt
+	xkb_numlock enabled
+}
+
+input type:touchpad {
+	accel_profile flat
+	click_method clickfinger
+	clickfinger_button_map lrm
+	dwt enabled
+	middle_emulation enabled
+	natural_scroll disabled
+	scroll_method two_finger
+	tap enabled
+	tap_button_map lrm
+}
