@@ -1,9 +1,12 @@
-timeout 300 'pidof hyprlock || uwsm-app -- hyprlock'
-timeout 600 'wlr-dpms off' resume 'wlr-dpms on'
-# timeout 600 "hyprctl dispatch 'hl.dsp.dpms({action = \"disable\"})'" resume "hyprctl dispatch 'hl.dsp.dpms({action = \"enable\"})'"
+timeout 300 'pidof hyprlock || hyprlock'
+timeout 600 'mmsg dispatch sleep_monitor' resume 'mmsg dispatch wakeup_monitor' # Mango
+# timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' # Sway
+# timeout 600 'wlr-dpms off' resume 'wlr-dpms on' # Wlroots
+# timeout 600 'hyprctl dispatch "hl.dsp.dpms({action = \"disable\"})"' resume 'hyprctl dispatch "hl.dsp.dpms({action = \"enable\"})"' # Hyprland
 
-
-lock "pidof hyprlock || uwsm-app -- hyprlock"
-before-sleep 'pidof hyprlock || uwsm-app -- hyprlock'
-after-resume 'wlr-dpms on'
-# after-resume hyprctl dispatch 'hl.dsp.dpms({action = "enable"})'
+lock "pidof hyprlock || hyprlock"
+before-sleep 'pidof hyprlock || hyprlock'
+after-resume 'mmsg dispatch wakeup_monitor' # Mango
+# after-resume 'swaymsg "output * power on"' # Sway
+# after-resume 'wlr-dpms on' # Wlroots
+# after-resume 'hyprctl dispatch "hl.dsp.dpms({action = \"enable\"})"' # Hyprland
