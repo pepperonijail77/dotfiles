@@ -1,5 +1,5 @@
 # Dotfiles
 
-Just my dotfiles for Arch + Mango.
+My dotfiles for Artix + Mango.
 
 ![](./screenshot.png)
