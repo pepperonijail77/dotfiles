@@ -8,7 +8,7 @@
 	// "margin-right": 10,
 	// "width": 1920, // Waybar width
 	"spacing": 4, // Gaps between modules (4px)
-	"modules-left": ["mango/workspaces", "hyprland/workspaces"], // "mango/window", "hyprland/window"
+	"modules-left": ["ext/workspaces", "mango/workspaces", "hyprland/workspaces"], // "mango/window", "hyprland/window"
 	"modules-center": ["clock"],
 	"modules-right": [
 		"tray",
@@ -20,8 +20,8 @@
 		"custom/power",
 	], // "mango/keymode", "mango/language", "custom/lang", "cpu", "mpd", "custom/menu"
 	// Modules configuration
-	"mango/workspaces": {
-		"format": "{icon}",
+	"ext/workspaces": {
+		"format": "{name}",
 		"hide-empty": true,
 		"on-click": "activate",
 		"on-click-right": "toggle",

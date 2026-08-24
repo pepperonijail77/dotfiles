@@ -1,5 +1,5 @@
 configuration {
-	font: "JetBrainsMono NF 14";
+	font: "JetBrainsMono Nerd Font Propo 14";
 	show-icons: true;
 	// terminal: "kitty";
 	icon-theme: "Papirus";
