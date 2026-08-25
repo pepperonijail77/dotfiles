@@ -31,10 +31,18 @@ run_rofi() {
 run_cmd() {
 	case $1 in
 		--shutdown)
-			systemctl poweroff --no-wall
+			if [[ -x '/usr/bin/systemctl' ]]; then
+				systemctl poweroff --no-wall
+			else
+				pkexec poweroff
+			fi
 			;;
 		--reboot)
-			systemctl reboot --no-wall
+			if [[ -x '/usr/bin/systemctl' ]]; then
+				systemctl reboot --no-wall
+			else
+				pkexec reboot
+			fi
 			;;
 		--lock)
 			if [[ -x '/usr/bin/hyprlock' ]]; then
@@ -48,13 +56,20 @@ run_cmd() {
 		--suspend)
 			mpc -q pause
 			amixer set Master mute
-			systemctl suspend
+			if [[ -x '/usr/bin/systemctl' ]]; then
+				systemctl suspend
+			else
+				loginctl suspend
+			fi
 			;;
 		--logout)
 			if uwsm check is-active; then 
 				uwsm stop
 			else
 				case "$DESKTOP_SESSION" in
+					mango)
+						mmsg dispatch quit
+						;;
 					hyprland)
 						hyprctl dispatch 'hl.dsp.exit()'
 						;;
