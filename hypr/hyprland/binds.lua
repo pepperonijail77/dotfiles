@@ -4,13 +4,13 @@
 
 local terminal    = "kitty"
 local fileManager = "nemo"
-local browser     = "firefox-developer-edition"
+local browser     = "librewolf"
 local menu        = "rofi -show drun -run-command \"uwsm-app -- {cmd}\""
 local runner      = "hyprland-run"
 local window      = "rofi -show window"
 local lock        = "hyprlock"
 local screenshot  = "grim"
-local mail        = "flatpak run com.tutanota.Tutanota --password-store=basic"
+local mail        = browser .. " --new-tab https://app.tuta.com/mail"
 local calculator  = "qalculate-gtk"
 
 
