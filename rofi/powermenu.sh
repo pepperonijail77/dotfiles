@@ -33,6 +33,8 @@ run_cmd() {
 		--shutdown)
 			if [[ -x '/usr/bin/systemctl' ]]; then
 				systemctl poweroff --no-wall
+			elif [[ -x '/usr/bin/loginctl' ]]; then
+				loginctl poweroff
 			else
 				pkexec poweroff
 			fi
@@ -40,6 +42,8 @@ run_cmd() {
 		--reboot)
 			if [[ -x '/usr/bin/systemctl' ]]; then
 				systemctl reboot --no-wall
+			elif [[ -x '/usr/bin/loginctl' ]]; then
+				loginctl reboot
 			else
 				pkexec reboot
 			fi
@@ -47,6 +51,8 @@ run_cmd() {
 		--lock)
 			if [[ -x '/usr/bin/hyprlock' ]]; then
 				hyprlock
+			elif [[ -x '/usr/bin/swaylock' ]]; then
+				swaylock
 			elif [[ -x '/usr/bin/betterlockscreen' ]]; then
 				betterlockscreen -l
 			elif [[ -x '/usr/bin/i3lock' ]]; then
@@ -55,10 +61,10 @@ run_cmd() {
 			;;
 		--suspend)
 			mpc -q pause
-			amixer set Master mute
+			# amixer set Master mute
 			if [[ -x '/usr/bin/systemctl' ]]; then
 				systemctl suspend
-			else
+			elif [[ -x '/usr/bin/loginctl' ]]; then
 				loginctl suspend
 			fi
 			;;
@@ -73,14 +79,14 @@ run_cmd() {
 					hyprland)
 						hyprctl dispatch 'hl.dsp.exit()'
 						;;
+					sway)
+						swaymsg exit
+						;;
 					openbox)
 						openbox --exit
 						;;
 					bspwm)
 						bspc quit
-						;;
-					dwm)
-						pkill dwm
 						;;
 					i3)
 						i3-msg exit
@@ -88,6 +94,8 @@ run_cmd() {
 					plasma)
 						qdbus org.kde.ksmserver /KSMServer logout 0 0 0
 						;;
+					*)
+						pkill "$DESKTOP_SESSION"
 				esac
 			fi
 			;;
