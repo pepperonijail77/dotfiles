@@ -1,0 +1,6 @@
+timeout 300 'pidof hyprlock || hyprlock'
+timeout 600 'mmsg dispatch sleep_monitor' resume 'mmsg dispatch wakeup_monitor'
+
+lock "pidof hyprlock || hyprlock"
+before-sleep 'pidof hyprlock || hyprlock'
+after-resume 'mmsg dispatch wakeup_monitor'

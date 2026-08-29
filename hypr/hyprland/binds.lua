@@ -3,7 +3,7 @@
 ------------------
 
 local terminal    = "kitty"
-local fileManager = "nemo"
+local fileManager = "thunar"
 local browser     = "librewolf"
 local menu        = "rofi -show drun -run-command \"uwsm-app -- {cmd}\""
 local runner      = "hyprland-run"
@@ -44,11 +44,12 @@ hl.bind("SUPER + L",           run(lock))
 hl.bind("Print",               hl.dsp.exec_cmd(screenshot .. " -o \"$(mmsg get all-monitors | jq -r '.monitors[] | select(.active) | .name')\" - | tee $(xdg-user-dir PICTURES)/Screenshots/$(date +%Y%m%d_%H%M%S_grim.png) | wl-copy"))
 hl.bind("SHIFT + Print",       hl.dsp.exec_cmd(screenshot .. " -g \"$(slurp)\" - | tee $(xdg-user-dir PICTURES)/Screenshots/$(date +%Y%m%d_%H%M%S_grim.png) | wl-copy"))
 hl.bind("ALT + Print",         hl.dsp.exec_cmd(screenshot .. " -T $(mmsg get focusing-client | jq -r '.foreign_toplevel_id') - | tee $(xdg-user-dir PICTURES)/Screenshots/$(date +%Y%m%d_%H%M%S_grim.png) | wl-copy"))
-hl.bind("SUPER + V",           run("clipvault list | rofi -dmenu -p 󱘟 -display-columns 2 | clipvault get | wl-copy"))
+hl.bind("SUPER + V",           run("cliphist list | rofi -dmenu -p 󱘟 -display-columns 2 | cliphist decode | wl-copy"))
 hl.bind("SUPER + H",           hl.dsp.window.tag({ tag = "bar" }))
 hl.bind("SUPER + K",           hl.dsp.exec_cmd("hyprctl kill"))
 hl.bind("SUPER + Slash",       run("swaync-client -t -sw"))
 hl.bind("CTRL + ALT + DELETE", hl.dsp.exec_cmd("~/.config/rofi/powermenu.sh"))
+hl.bind("SUPER + Period",      run("emote"))
 
 hl.bind("SUPER + left",          hl.dsp.focus({ direction = "left" }))
 hl.bind("SUPER + right",         hl.dsp.focus({ direction = "right" }))

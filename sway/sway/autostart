@@ -1,6 +1,6 @@
 ### Autostart configuration
 
-exec swayidle
+exec swayidle -C $XDG_CONFIG_HOME/swayidle/sway
 exec waybar
 exec wl-clip-persist --clipboard regular
 exec swaync

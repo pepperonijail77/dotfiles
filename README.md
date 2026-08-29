@@ -1,5 +1,5 @@
 # Dotfiles
 
-My dotfiles for Artix + Mango.
+My dotfiles for Artix (dinit) + Mango.
 
 ![](./screenshot.png)

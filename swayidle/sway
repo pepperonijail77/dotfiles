@@ -1,0 +1,6 @@
+timeout 300 'pidof hyprlock || hyprlock'
+timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
+
+lock "pidof hyprlock || hyprlock"
+before-sleep 'pidof hyprlock || hyprlock'
+after-resume 'swaymsg "output * power on"'

@@ -1,0 +1,6 @@
+timeout 300 'pidof hyprlock || hyprlock'
+timeout 600 'hyprctl dispatch "hl.dsp.dpms({action = \"disable\"})"' resume 'hyprctl dispatch "hl.dsp.dpms({action = \"enable\"})"'
+
+lock "pidof hyprlock || hyprlock"
+before-sleep 'pidof hyprlock || hyprlock'
+after-resume 'hyprctl dispatch "hl.dsp.dpms({action = \"enable\"})"'

@@ -1,0 +1,6 @@
+timeout 300 'pidof hyprlock || hyprlock'
+timeout 600 'wlr-dpms off' resume 'wlr-dpms on'
+
+lock "pidof hyprlock || hyprlock"
+before-sleep 'pidof hyprlock || hyprlock'
+after-resume 'wlr-dpms on'
