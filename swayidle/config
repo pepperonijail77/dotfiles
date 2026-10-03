@@ -3,10 +3,12 @@ timeout 300 'pidof hyprlock || hyprlock'
 # timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' # Sway
 # timeout 600 'wlr-dpms off' resume 'wlr-dpms on' # Wlroots
 # timeout 600 'hyprctl dispatch "hl.dsp.dpms({action = \"disable\"})"' resume 'hyprctl dispatch "hl.dsp.dpms({action = \"enable\"})"' # Hyprland
+# timeout 600 'niri msg action power-off-monitors' resume 'niri msg action power-on-monitors' # Niri
 
-lock "pidof hyprlock || hyprlock"
+lock 'pidof hyprlock || hyprlock'
 before-sleep 'pidof hyprlock || hyprlock'
 # after-resume 'mmsg dispatch wakeup_monitor' # Mango
 # after-resume 'swaymsg "output * power on"' # Sway
 # after-resume 'wlr-dpms on' # Wlroots
 # after-resume 'hyprctl dispatch "hl.dsp.dpms({action = \"enable\"})"' # Hyprland
+# after-resume 'niri msg action power-on-monitors' # Niri

@@ -1,0 +1,6 @@
+timeout 300 'pidof hyprlock || hyprlock'
+timeout 600 'niri msg action power-off-monitors' resume 'niri msg action power-on-monitors'
+
+lock 'pidof hyprlock || hyprlock'
+before-sleep 'pidof hyprlock || hyprlock'
+after-resume 'niri msg action power-on-monitors'
