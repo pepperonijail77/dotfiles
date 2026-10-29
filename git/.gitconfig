@@ -2,7 +2,18 @@
 	name = 
 	email = 
 	signingkey = /home/<USER>/.ssh/id_ed25519.pub
+
 [gpg]
 	format = ssh
+
 [commit]
 	gpgsign = true
+
+[remote]
+	pushDefault = origin
+
+[push]
+	autoSetupRemote = true
+
+[init]
+	defaultBranch = master
