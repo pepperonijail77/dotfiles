@@ -6,8 +6,8 @@
 [[ $- != *i* ]] && return
 
 # Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+if [ -f /etc/bash/bashrc ]; then
+	. /etc/bash/bashrc
 fi
 
 # Use bash-completion, if available
@@ -35,7 +35,7 @@ alias mic='micro'
 alias smic='sudo micro'
 alias vim='nvim'
 alias vi='nvim'
-alias vis='nvim "+set si"'
+# alias vis='nvim "+set si"'
 alias spico='sudo pico'
 alias snano='sudo nano'
 alias smicro='sudo micro'
