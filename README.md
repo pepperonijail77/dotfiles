@@ -7,6 +7,6 @@ My dotfiles for Artix (dinit) + Mango.
 ### Install
 
 ```sh
-stow --adopt --no-folding home -t ~
+stow home
 sudo cp -ri root/* /
 ```
