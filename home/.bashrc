@@ -93,12 +93,22 @@ alias freshclam='sudo freshclam'
 alias ll='ls -Alh --color=auto'
 alias tree='tree -CAh --dirsfirst'
 
-alias yays='yay -Slq | fzf --multi --preview '\''yay -Sii {1}'\'' --preview-window=down:75% | xargs -ro yay -S'
+alias yays='yay -Slq | sort | uniq | fzf --multi --preview '\''yay -Sii {1}'\'' --preview-window=down:75% | xargs -ro yay -S'
+alias flatpak=rpak
 alias ll='ls -Fls'
 
 # Change directory aliases
 alias cd..='cd ..'
+alias cd...='cd ../..'
+alias cd....='cd ../../..'
+alias cd.....='cd ../../../..'
+alias cd......='cd ../../../../..'
 alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias cd-='cd -'
 
 # Extracts any archive(s) (if unp isn't installed)
 extract() {
@@ -138,3 +148,7 @@ PS1='[\[\e[34m\]\u@\h \[\e[94;1m\]\W\[\e[0m\]]\$ '
 
 # Bash completions
 . <(asdf completion bash)
+
+[[ -r $NVM_DIR/bash_completion ]] && \. $NVM_DIR/bash_completion
+
+source <(rpak completion bash)

@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 yay -Syu --noconfirm
-flatpak update -uy
+rpak update -uy
 for tool in $(asdf plugin list); do
 	asdf install "${tool}" latest;
 done
